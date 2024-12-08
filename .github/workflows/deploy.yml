@@ -14,25 +14,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Configurar Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # 2. Instalación de dependencias Y build
+      - name: Install and Build
+        uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
-          node-version: 18 # Asegúrate de usar la versión que necesitas
-
-      # 3. Instalar dependencias dentro del subdirectorio 'prueba'
-      - name: Install dependencies
-        run: npm install
-        working-directory: prueba
-
-      # 4. Generar el build dentro del subdirectorio 'prueba'
-      - name: Build project
-        run: npm run build
-        working-directory: prueba
-
-      # 5. Desplegar en GitHub Pages desde 'prueba/dist'
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: prueba/dist
+          BRANCH: gh-pages
+          FOLDER: dist
