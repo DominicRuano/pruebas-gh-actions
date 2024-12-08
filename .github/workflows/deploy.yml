@@ -6,16 +6,17 @@ on:
       - main # Cambia 'main' si tu rama principal tiene otro nombre
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       # 1. Checkout del repositorio
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
       # 2. Instalación de dependencias Y build
-      - name: Install and Build
+      - name: Install & Build
+        run: npm i && npm run build
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           BRANCH: gh-pages
