@@ -16,7 +16,7 @@ jobs:
 
       # 2. Instalación de dependencias Y build
       - name: Install & Build
-        run: npm i && npm run build
+        run: cd prueba && npm i && npm run build
 
       # 3. Deploy a GitHub Pages
       - name: Deploy
